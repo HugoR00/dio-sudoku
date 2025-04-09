@@ -31,4 +31,16 @@ public final class Board {
         }
         return spaces.stream().flatMap(Collection::stream).anyMatch(s -> nonNull(s.getAtual()) && !s.getAtual().equals(s.getEsperado()));
     }
+
+    public boolean alteraValor(final int col, final int row, final Integer valor){
+        var space = spaces.get(col).get(row);
+        if (space.isFixo()){
+            return false;
+        }
+
+        space.setAtual(valor);
+        return true;
+    }
+
+
 }
